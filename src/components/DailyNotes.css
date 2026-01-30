@@ -1,0 +1,66 @@
+.daily-notes-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.notes-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1f37;
+}
+
+.notes-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.notes-textarea {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 250px;
+  transition: border-color 0.3s ease;
+}
+
+.notes-textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+}
+
+.notes-textarea:disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+.notes-footer {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+@media (max-width: 576px) {
+  .notes-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notes-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

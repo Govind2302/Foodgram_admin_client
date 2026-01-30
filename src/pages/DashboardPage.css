@@ -1,0 +1,136 @@
+.dashboard-page {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Welcome Section */
+.welcome-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(135deg, #e23744 0%, #c62828 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.current-time {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.time-display {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-card .card-title {
+  font-weight: 600;
+  color: #1a1f37;
+  font-size: 18px;
+}
+
+/* Info Cards */
+.info-card {
+  height: 100%;
+}
+
+.info-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.bg-primary-light {
+  background: rgba(13, 110, 253, 0.1);
+}
+
+.bg-success-light {
+  background: rgba(25, 135, 84, 0.1);
+}
+
+.bg-warning-light {
+  background: rgba(255, 193, 7, 0.1);
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* System Info */
+.system-info {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Quick Actions Buttons */
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.btn-outline-info:hover,
+.btn-outline-warning:hover,
+.btn-outline-secondary:hover {
+  transform: translateX(5px);
+  transition: transform 0.2s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .welcome-section {
+    padding: 1.5rem;
+  }
+
+  .dashboard-title {
+    font-size: 24px;
+  }
+
+  .current-time {
+    width: 100%;
+    justify-content: center;
+  }
+}
