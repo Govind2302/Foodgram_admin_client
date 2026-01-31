@@ -43,9 +43,9 @@ function Sidebar() {
   const fetchBadgeCounts = async () => {
     try {
       const [restaurantsRes, deliveryRes, complaintsRes] = await Promise.all([
-        api.get('/admin/restaurants/pending'),
-        api.get('/admin/delivery-persons/pending'),
-        api.get('/admin/complaints/unresolved')
+        api.get('/restaurants/pending'),
+        api.get('/delivery-persons/pending'),
+        api.get('/complaints/unresolved')
       ]);
 
       setBadgeCounts({
