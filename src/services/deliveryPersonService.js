@@ -1,7 +1,7 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import config from "./config";
 import { getAdminToken } from "./authService";
+import api from "./apiService";
 
 const API_URL = config.ADMIN_API;
 
@@ -18,7 +18,7 @@ export async function getAllDeliveryPersons(page = 0, size = 10, verificationSta
     if (verificationStatus) url += `&verificationStatus=${verificationStatus}`;
     if (operatingArea) url += `&operatingArea=${operatingArea}`;
     
-    const response = await axios.get(url, {
+    const response = await api.get(url, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Returns Page object
@@ -32,7 +32,7 @@ export async function getAllDeliveryPersons(page = 0, size = 10, verificationSta
 // Get pending delivery persons
 export async function getPendingDeliveryPersons(page = 0, size = 10) {
   try {
-    const response = await axios.get(
+    const response = await api.get(
       `${API_URL}/delivery-persons/pending?page=${page}&size=${size}`,
       { headers: getAuthHeader() }
     );
@@ -47,7 +47,7 @@ export async function getPendingDeliveryPersons(page = 0, size = 10) {
 // Get delivery person by ID
 export async function getDeliveryPersonById(id) {
   try {
-    const response = await axios.get(`${API_URL}/delivery-persons/${id}`, {
+    const response = await api.get(`${API_URL}/delivery-persons/${id}`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -61,7 +61,7 @@ export async function getDeliveryPersonById(id) {
 // Update verification status
 export async function updateDeliveryPersonVerification(id, status) {
   try {
-    const response = await axios.patch(
+    const response = await api.patch(
       `${API_URL}/delivery-persons/${id}/verification?status=${status}`,
       {},
       { headers: getAuthHeader() }
@@ -78,7 +78,7 @@ export async function updateDeliveryPersonVerification(id, status) {
 // Update delivery person
 export async function updateDeliveryPerson(id, data) {
   try {
-    const response = await axios.put(
+    const response = await api.put(
       `${API_URL}/delivery-persons/${id}`,
       data,
       { headers: getAuthHeader() }
@@ -95,7 +95,7 @@ export async function updateDeliveryPerson(id, data) {
 // Delete delivery person
 export async function deleteDeliveryPerson(id) {
   try {
-    const response = await axios.delete(`${API_URL}/delivery-persons/${id}`, {
+    const response = await api.delete(`${API_URL}/delivery-persons/${id}`, {
       headers: getAuthHeader(),
     });
     toast.success('Delivery person deleted successfully!');

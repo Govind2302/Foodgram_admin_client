@@ -1,4 +1,3 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import config from "./config";
 import { getAdminToken } from "./authService";
@@ -34,7 +33,7 @@ export async function getAllRestaurants(page = 0, size = 10, verificationStatus 
 // Get pending restaurants
 export async function getPendingRestaurants() {
   try {
-    const response = await axios.get(`${API_URL}/restaurants/pending`, {
+    const response = await api.get(`${API_URL}/restaurants/pending`, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Array
@@ -48,7 +47,7 @@ export async function getPendingRestaurants() {
 // Get restaurant by ID
 export async function getRestaurantById(id) {
   try {
-    const response = await axios.get(`${API_URL}/restaurants/${id}`, {
+    const response = await api.get(`${API_URL}/restaurants/${id}`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -62,7 +61,7 @@ export async function getRestaurantById(id) {
 // Update verification status
 export async function updateRestaurantVerification(id, status) {
   try {
-    const response = await axios.patch(
+    const response = await api.patch(
       `${API_URL}/restaurants/${id}/verification?status=${status}`,
       {},
       { headers: getAuthHeader() }
@@ -79,7 +78,7 @@ export async function updateRestaurantVerification(id, status) {
 // Update restaurant
 export async function updateRestaurant(id, data) {
   try {
-    const response = await axios.put(
+    const response = await api.put(
       `${API_URL}/restaurants/${id}`,
       data,
       { headers: getAuthHeader() }
@@ -97,7 +96,7 @@ export async function updateRestaurant(id, data) {
 // Delete restaurant
 export async function deleteRestaurant(id) {
   try {
-    const response = await axios.delete(`${API_URL}/restaurants/${id}`, {
+    const response = await api.delete(`${API_URL}/restaurants/${id}`, {
       headers: getAuthHeader(),
     });
     toast.success('Restaurant deleted successfully!');

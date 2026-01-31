@@ -1,9 +1,9 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import config from "./config";
 import { getAdminToken } from "./authService";
+import api from "./apiService";
 
-const API_URL = config.BASE_URL + '/admin';
+const API_URL = config.ADMIN_API;
 
 // Get authorization header
 const getAuthHeader = () => {
@@ -18,7 +18,7 @@ export async function getAllReviews(page = 0, size = 10, restaurantId = null, de
     if (restaurantId) url += `&restaurantId=${restaurantId}`;
     if (deliveryPersonId) url += `&deliveryPersonId=${deliveryPersonId}`;
     
-    const response = await axios.get(url, {
+    const response = await api.get(url, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Page object
@@ -32,7 +32,7 @@ export async function getAllReviews(page = 0, size = 10, restaurantId = null, de
 // Get review by ID
 export async function getReviewById(id) {
   try {
-    const response = await axios.get(`${API_URL}/reviews/${id}`, {
+    const response = await api.get(`${API_URL}/reviews/${id}`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -46,7 +46,7 @@ export async function getReviewById(id) {
 // Get reviews by restaurant
 export async function getReviewsByRestaurant(restaurantId) {
   try {
-    const response = await axios.get(`${API_URL}/reviews/restaurant/${restaurantId}`, {
+    const response = await api.get(`${API_URL}/reviews/restaurant/${restaurantId}`, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Array
@@ -60,7 +60,7 @@ export async function getReviewsByRestaurant(restaurantId) {
 // Get reviews by delivery person
 export async function getReviewsByDeliveryPerson(deliveryPersonId) {
   try {
-    const response = await axios.get(`${API_URL}/reviews/delivery-person/${deliveryPersonId}`, {
+    const response = await api.get(`${API_URL}/reviews/delivery-person/${deliveryPersonId}`, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Array
@@ -74,7 +74,7 @@ export async function getReviewsByDeliveryPerson(deliveryPersonId) {
 // Get average rating for restaurant
 export async function getRestaurantAverageRating(restaurantId) {
   try {
-    const response = await axios.get(`${API_URL}/reviews/restaurant/${restaurantId}/rating`, {
+    const response = await api.get(`${API_URL}/reviews/restaurant/${restaurantId}/rating`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -87,7 +87,7 @@ export async function getRestaurantAverageRating(restaurantId) {
 // Get average rating for delivery person
 export async function getDeliveryPersonAverageRating(deliveryPersonId) {
   try {
-    const response = await axios.get(`${API_URL}/reviews/delivery-person/${deliveryPersonId}/rating`, {
+    const response = await api.get(`${API_URL}/reviews/delivery-person/${deliveryPersonId}/rating`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -100,7 +100,7 @@ export async function getDeliveryPersonAverageRating(deliveryPersonId) {
 // Delete review
 export async function deleteReview(id) {
   try {
-    const response = await axios.delete(`${API_URL}/reviews/${id}`, {
+    const response = await api.delete(`${API_URL}/reviews/${id}`, {
       headers: getAuthHeader(),
     });
     toast.success('Review deleted successfully!');

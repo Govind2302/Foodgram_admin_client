@@ -1,13 +1,13 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import config from "./config";
+import api from './apiService';
 
 // Admin Login
 export async function loginAdmin(email, password) {
     try {
         const adminBody = { email, password };
         const url = config.ADMIN_API + '/auth/login'; 
-        const response = await axios.post(url, adminBody);
+        const response = await api.post(url, adminBody);
         
         // Return the data object from response
         return response.data.data; // This contains: userId, email, fullName, role, token, status
@@ -22,7 +22,7 @@ export async function registerAdmin(fullName, email, password, phone) {
     try {
         const adminBody = { fullName, email, password, phone };
         const url = config.ADMIN_API + '/auth/register';
-        const response = await axios.post(url, adminBody);
+        const response = await api.post(url, adminBody);
         toast.success('Admin registered successfully!');
         return response.data.data;
     } catch (ex) {

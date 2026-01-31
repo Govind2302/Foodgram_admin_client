@@ -1,9 +1,9 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import config from "./config";
 import { getAdminToken } from "./authService";
+import api from "./apiService";
 
-const API_URL = config.BASE_URL + '/api/admin'; 
+const API_URL = config.ADMIN_API; 
 
 // Get authorization header
 const getAuthHeader = () => {
@@ -18,7 +18,7 @@ export async function getAllUsers(page = 0, size = 10, role = null, status = nul
     if (role) url += `&role=${role}`;
     if (status) url += `&status=${status}`;
     
-    const response = await axios.get(url, {
+    const response = await api.get(url, {
       headers: getAuthHeader(),
     });
     
@@ -34,7 +34,7 @@ export async function getAllUsers(page = 0, size = 10, role = null, status = nul
 // Get user by ID
 export async function getUserById(id) {
   try {
-    const response = await axios.get(`${API_URL}/users/${id}`, {
+    const response = await api.get(`${API_URL}/users/${id}`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -48,7 +48,7 @@ export async function getUserById(id) {
 // Get users by role
 export async function getUsersByRole(role) {
   try {
-    const response = await axios.get(`${API_URL}/users/role/${role}`, {
+    const response = await api.get(`${API_URL}/users/role/${role}`, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Returns array
@@ -62,7 +62,7 @@ export async function getUsersByRole(role) {
 // Update user
 export async function updateUser(id, data) {
   try {
-    const response = await axios.put(
+    const response = await api.put(
       `${API_URL}/users/${id}`,
       data,
       { headers: getAuthHeader() }
@@ -79,7 +79,7 @@ export async function updateUser(id, data) {
 // Update user status
 export async function updateUserStatus(id, status) {
   try {
-    const response = await axios.patch(
+    const response = await api.patch(
       `${API_URL}/users/${id}/status?status=${status}`,
       {},
       { headers: getAuthHeader() }
@@ -96,7 +96,7 @@ export async function updateUserStatus(id, status) {
 // Delete user
 export async function deleteUser(id) {
   try {
-    const response = await axios.delete(`${API_URL}/users/${id}`, {
+    const response = await api.delete(`${API_URL}/users/${id}`, {
       headers: getAuthHeader(),
     });
     toast.success('User deleted successfully!');

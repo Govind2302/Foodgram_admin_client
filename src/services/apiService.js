@@ -5,7 +5,7 @@ import { getAdminToken, logoutAdmin } from "./authService";
 
 // Create axios instance
 const api = axios.create({
-    baseURL: config.BASE_URL,
+    baseURL: config.ADMIN_API,
 });
 
 // Add token to every request

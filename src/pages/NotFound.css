@@ -1,0 +1,382 @@
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.notfound-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+}
+
+.notfound-content {
+  background: white;
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Error Code Animation */
+.error-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.error-digit {
+  font-size: 120px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.error-digit:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.error-digit:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.error-digit:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.error-digit-0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+}
+
+.error-icon {
+  color: #667eea;
+  animation: rotate 3s linear infinite;
+}
+
+/* Text Styles */
+.error-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1f37;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  font-size: 18px;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-path {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 2rem;
+}
+
+.error-path code {
+  color: #667eea;
+  font-weight: 600;
+  background: none;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+
+/* Action Buttons */
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 2rem;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline-secondary {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+  background: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background: #6c757d;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3);
+}
+
+/* Helpful Links */
+.helpful-links {
+  padding-top: 2rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.helpful-links p {
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+.link-item {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.link-item:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+  color: #764ba2;
+}
+
+/* Decorative Circles */
+.decorative-circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  right: -50px;
+  animation-delay: 1s;
+}
+
+.circle-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.circle-4 {
+  width: 250px;
+  height: 250px;
+  bottom: -100px;
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .notfound-content {
+    padding: 3rem 2rem;
+  }
+
+  .error-code {
+    gap: 0.5rem;
+  }
+
+  .error-digit {
+    font-size: 80px;
+  }
+
+  .error-digit-0 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .error-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .error-title {
+    font-size: 28px;
+  }
+
+  .error-message {
+    font-size: 16px;
+  }
+
+  .error-actions {
+    flex-direction: column;
+  }
+
+  .btn-lg {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .helpful-links .d-flex {
+    flex-direction: column;
+    gap: 0.75rem !important;
+  }
+
+  .link-item {
+    display: block;
+    text-align: center;
+  }
+
+  .circle {
+    opacity: 0.5;
+  }
+
+  .circle-1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .circle-2 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .circle-3 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .circle-4 {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notfound-page {
+    padding: 1rem;
+  }
+
+  .notfound-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .error-digit {
+    font-size: 60px;
+  }
+
+  .error-digit-0 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .error-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .error-title {
+    font-size: 24px;
+  }
+
+  .error-path {
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+  }
+}

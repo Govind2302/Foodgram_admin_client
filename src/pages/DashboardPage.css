@@ -92,6 +92,27 @@
   background: rgba(255, 193, 7, 0.1);
 }
 
+.dashboard-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.info-icon {
+  transition: transform 0.25s ease;
+}
+
+.info-card:hover .info-icon {
+  transform: scale(1.1) rotate(3deg);
+}
+
+
 /* Spinner Animation */
 @keyframes spin {
   from {

@@ -4,7 +4,13 @@ import { useAuth } from './context/AuthContext.jsx';
 import Login from './pages/LoginPage.jsx';
 import Dashboard from './pages/DashboardPage.jsx';
 import Restaurants from './pages/RestaurantsPage.jsx';
+import Users from './pages/UsersPage.jsx';
+import DeliveryPersons from './pages/DeliveryPersonsPage.jsx';
+import ComplaintsPage from './pages/ComplaintsPage.jsx';
+import ReviewsPage from './pages/ReviewsPage.jsx';
 import './App.css';
+import NotificationsPage from './pages/NotificationsPage';
+import SettingsPage from './pages/SettingsPage';
 
 // Protected Route Component
 function ProtectedRoute({ children }) {
@@ -55,6 +61,16 @@ function App() {
           } 
         />
 
+        {/* Users Route - Protected */}
+        <Route 
+      path="/users" 
+      element={
+        <ProtectedRoute>
+          <Users />
+        </ProtectedRoute>
+          } 
+        />
+
         {/* Restaurants Route - Protected */}
         <Route 
           path="/restaurants" 
@@ -63,6 +79,56 @@ function App() {
               <Restaurants />
             </ProtectedRoute>
           } 
+        />
+
+        {/* Delivery Person Route - Protected */}
+                <Route 
+          path="/delivery-persons" 
+          element={
+            <ProtectedRoute>
+              <DeliveryPersons />
+            </ProtectedRoute>
+          } 
+        />
+
+        {/* Complains Route - Protected */}
+        <Route
+        path="/complaints"
+        element={
+          <ProtectedRoute>
+            <ComplaintsPage />
+          </ProtectedRoute>
+        }
+        />
+
+        {/* Reviews Route - Protected */}
+        <Route
+        path="/reviews"
+        element={
+          <ProtectedRoute>
+            <ReviewsPage />
+          </ProtectedRoute>
+        }
+        />
+
+        {/* Notification Route - Protected */}
+        <Route
+        path="/notifications"
+        element={
+          <ProtectedRoute>
+            <NotificationsPage />
+          </ProtectedRoute>
+        }
+        />
+
+        {/* Setting Route - Protected */}
+        <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <SettingsPage />
+          </ProtectedRoute>
+        }
         />
         
         {/* Catch all - Redirect to Login */}

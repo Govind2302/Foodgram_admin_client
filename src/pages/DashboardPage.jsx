@@ -3,6 +3,8 @@ import { useAuth } from '../context/AuthContext.jsx';
 import DashboardLayout from '../components/DashboardLayout.jsx';
 import StatCard from '../components/StatCard.jsx';
 import DailyNotes from '../components/DailyNotes.jsx';
+import { getDashboardStats } from '../services/dashboardService';
+import api from '../services/apiService';
 import {
   Users,
   UtensilsCrossed,
@@ -18,19 +20,41 @@ function Dashboard() {
   const { admin } = useAuth();
   
   const [loading, setLoading] = useState(true);
+const [stats, setStats] = useState({
+  totalUsers: 0,
+  totalRestaurants: 0,
+  pendingRestaurants: 0,
+  totalDeliveryPersons: 0,
+  pendingDeliveryPersons: 0,
+  totalComplaints: 0,
+  newComplaints: 0,
+  totalReviews: 0,
+});
+
   const [currentTime, setCurrentTime] = useState(new Date());
+
+const fetchStats = async () => {
+  try {
+    const data = await getDashboardStats();
+    setStats(data);
+  } catch (err) {
+    console.error("Dashboard stats load failed:", err);
+  }
+};   
 
   // Update time every minute
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000);
+  const timer = setInterval(() => {
+    setCurrentTime(new Date());
+  }, 60000);
 
-    // Simulate loading
-    setTimeout(() => setLoading(false), 500);
+  fetchStats();
 
-    return () => clearInterval(timer);
-  }, []);
+  // Simulate loading
+  setTimeout(() => setLoading(false), 500);
+
+  return () => clearInterval(timer);
+}, []);
 
   const formatDate = () => {
     return currentTime.toLocaleDateString('en-IN', {
@@ -40,6 +64,7 @@ function Dashboard() {
       day: 'numeric',
     });
   };
+
 
   const formatTime = () => {
     return currentTime.toLocaleTimeString('en-IN', {
@@ -78,39 +103,22 @@ function Dashboard() {
 
         {/* Quick Stats */}
         <div className="row g-4 mb-4">
-          <div className="col-12 col-sm-6 col-lg-3">
-            <StatCard
-              title="Total Users"
-              value="6"
-              icon={Users}
-              variant="primary"
-            />
-          </div>
-          <div className="col-12 col-sm-6 col-lg-3">
-            <StatCard
-              title="Restaurants"
-              value="2"
-              icon={UtensilsCrossed}
-              variant="success"
-            />
-          </div>
-          <div className="col-12 col-sm-6 col-lg-3">
-            <StatCard
-              title="Delivery Persons"
-              value="2"
-              icon={Truck}
-              variant="info"
-            />
-          </div>
-          <div className="col-12 col-sm-6 col-lg-3">
-            <StatCard
-              title="Pending Verifications"
-              value="1"
-              icon={Clock}
-              variant="warning"
-            />
-          </div>
-        </div>
+  <div className="col-12 col-sm-6 col-lg-3">
+    <StatCard title="Total Users" value={stats.totalUsers} icon={Users} variant="primary" />
+  </div>
+
+  <div className="col-12 col-sm-6 col-lg-3">
+    <StatCard title="Restaurants" value={stats.totalRestaurants} icon={UtensilsCrossed} variant="success" />
+  </div>
+
+  <div className="col-12 col-sm-6 col-lg-3">
+    <StatCard title="Delivery Persons" value={stats.totalDeliveryPersons} icon={Truck} variant="info" />
+  </div>
+
+  <div className="col-12 col-sm-6 col-lg-3">
+    <StatCard title="Pending Restaurants" value={stats.pendingRestaurants} icon={Clock} variant="warning" />
+  </div>
+</div>
 
         {/* Main Content Row */}
         <div className="row g-4">
@@ -129,7 +137,9 @@ function Dashboard() {
                   <button className="btn btn-outline-primary text-start">
                     <UtensilsCrossed size={18} className="me-2" />
                     View Pending Restaurants
-                    <span className="badge bg-warning float-end">1</span>
+                    {stats.pendingRestaurants > 0 && (
+                      <span className="badge bg-warning float-end">{stats.pendingRestaurants}</span>
+                    )}
                   </button>
                   
                   <button className="btn btn-outline-success text-start">
@@ -145,6 +155,9 @@ function Dashboard() {
                   <button className="btn btn-outline-warning text-start">
                     <MessageSquare size={18} className="me-2" />
                     View Complaints
+                    {stats.complaints > 0 && (
+                    <span className="badge bg-danger float-end">{stats.complaints}</span>
+                    )}
                   </button>
                   
                   <button className="btn btn-outline-secondary text-start">

@@ -1,0 +1,341 @@
+.notifications-page {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1f37;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.unread-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.page-subtitle {
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Notification Stats Cards */
+.notification-stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.notification-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.notification-stat-card .stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.notification-stat-card .stat-icon.all {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.notification-stat-card .stat-icon.unread {
+  background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+}
+
+.notification-stat-card .stat-icon.restaurant {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+}
+
+.notification-stat-card .stat-icon.complaint {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.notification-stat-card .stat-content h4 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1f37;
+}
+
+.notification-stat-card .stat-content p {
+  font-size: 12px;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Card */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-body {
+  padding: 1rem 1.5rem;
+}
+
+/* Notifications List */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notification-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.notification-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateX(4px);
+}
+
+.notification-card.unread {
+  background: linear-gradient(to right, #f8f9fa 0%, white 100%);
+  border-left: 4px solid #667eea;
+}
+
+.notification-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.notification-card.unread .notification-indicator {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.notification-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.notification-icon.bg-warning {
+  background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+}
+
+.notification-icon.bg-info {
+  background: linear-gradient(135deg, #667eea 0%, #0dcaf0 100%);
+}
+
+.notification-icon.bg-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.notification-icon.bg-success {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+}
+
+.notification-icon.bg-secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.notification-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1f37;
+  margin: 0;
+}
+
+.notification-message {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline-primary {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.btn-outline-primary:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-outline-success:hover,
+.btn-outline-danger:hover,
+.btn-outline-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.875rem;
+}
+
+/* Badge */
+.badge {
+  padding: 0.35rem 0.65rem;
+  font-weight: 500;
+  font-size: 0.7rem;
+  border-radius: 6px;
+}
+
+.badge.bg-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.empty-state svg {
+  opacity: 0.3;
+}
+
+.empty-state h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .notification-stat-card {
+    padding: 1rem;
+  }
+
+  .notification-stat-card .stat-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .notification-stat-card .stat-content h4 {
+    font-size: 20px;
+  }
+
+  .notification-card {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .notification-actions {
+    align-self: flex-end;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+  }
+}

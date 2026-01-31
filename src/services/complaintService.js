@@ -1,9 +1,9 @@
-import axios from "axios";
 import { toast } from "react-toastify";
 import config from "./config";
 import { getAdminToken } from "./authService";
+import api from "./apiService";
 
-const API_URL = config.BASE_URL + '/admin';
+const API_URL = config.ADMIN_API;
 
 // Get authorization header
 const getAuthHeader = () => {
@@ -17,7 +17,7 @@ export async function getAllComplaints(page = 0, size = 10, status = null) {
     let url = `${API_URL}/complaints?page=${page}&size=${size}`;
     if (status) url += `&status=${status}`;
     
-    const response = await axios.get(url, {
+    const response = await api.get(url, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Page object
@@ -31,7 +31,7 @@ export async function getAllComplaints(page = 0, size = 10, status = null) {
 // Get new complaints
 export async function getNewComplaints() {
   try {
-    const response = await axios.get(`${API_URL}/complaints/new`, {
+    const response = await api.get(`${API_URL}/complaints/new`, {
       headers: getAuthHeader(),
     });
     return response.data.data; // Array
@@ -45,7 +45,7 @@ export async function getNewComplaints() {
 // Get complaint by ID
 export async function getComplaintById(id) {
   try {
-    const response = await axios.get(`${API_URL}/complaints/${id}`, {
+    const response = await api.get(`${API_URL}/complaints/${id}`, {
       headers: getAuthHeader(),
     });
     return response.data.data;
@@ -59,7 +59,7 @@ export async function getComplaintById(id) {
 // Add response to complaint
 export async function addComplaintResponse(id, responseText) {
   try {
-    const response = await axios.put(
+    const response = await api.put(
       `${API_URL}/complaints/${id}/response?response=${encodeURIComponent(responseText)}`,
       {},
       { headers: getAuthHeader() }
@@ -76,7 +76,7 @@ export async function addComplaintResponse(id, responseText) {
 // Update complaint status
 export async function updateComplaintStatus(id, status) {
   try {
-    const response = await axios.patch(
+    const response = await api.patch(
       `${API_URL}/complaints/${id}/status?status=${status}`,
       {},
       { headers: getAuthHeader() }
@@ -93,7 +93,7 @@ export async function updateComplaintStatus(id, status) {
 // Delete complaint
 export async function deleteComplaint(id) {
   try {
-    const response = await axios.delete(`${API_URL}/complaints/${id}`, {
+    const response = await api.delete(`${API_URL}/complaints/${id}`, {
       headers: getAuthHeader(),
     });
     toast.success('Complaint deleted successfully!');
