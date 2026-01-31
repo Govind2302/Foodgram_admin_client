@@ -2,6 +2,20 @@
   animation: fadeIn 0.3s ease;
 }
 
+.stats-card-primary .stats-icon,
+.stats-card-info .stats-icon {
+  background: linear-gradient(135deg, var(--blue-primary), var(--blue-accent));
+}
+
+.stats-card-success .stats-icon {
+  background: linear-gradient(135deg, #16a34a, #4ade80);
+}
+
+.stats-card-warning .stats-icon {
+  background: linear-gradient(135deg, var(--red-primary), #f87171);
+}
+
+
 /* Stats cards styling */
 .stats-card {
   background: white;
@@ -332,4 +346,55 @@ textarea.form-control {
 
 .badge.bg-secondary {
   background: linear-gradient(135deg, #6c757d 0%, #495057 100%) !important;
+}
+
+
+.stats-card-primary .stats-icon,
+.stats-card-info .stats-icon {
+  background: linear-gradient(135deg, var(--blue-primary), var(--blue-accent));
+}
+
+.stats-card-success .stats-icon {
+  background: linear-gradient(135deg, #16a34a, #4ade80);
+}
+
+.stats-card-warning .stats-icon {
+  background: linear-gradient(135deg, var(--red-primary), #f87171);
+}
+
+.page-title,
+.stats-content h3 {
+  color: var(--dark-text);
+}
+
+.page-subtitle,
+.stats-content p {
+  color: var(--gray-text);
+}
+
+
+.table thead th {
+  background: var(--blue-soft);
+  color: var(--blue-primary);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.table tbody tr:hover {
+  background-color: #f9fbff;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--blue-accent);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+.complaint-message-box {
+  background: var(--blue-soft);
+  border-left: 4px solid var(--blue-accent);
+}
+
+.response-box {
+  background: #f0fdf4;
+  border-left: 4px solid #16a34a;
 }

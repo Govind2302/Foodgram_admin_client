@@ -87,6 +87,12 @@
   vertical-align: middle;
 }
 
+.page-item.active .page-link {
+  background-color: var(--blue-accent);
+  border-color: var(--blue-accent);
+}
+
+
 
 @keyframes fadeIn {
   from { opacity: 0; }

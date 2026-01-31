@@ -339,3 +339,29 @@
     font-size: 0.875rem;
   }
 }
+
+
+.unread-badge {
+  background: var(--red-primary);
+}
+
+.notification-card.unread {
+  border-left: 4px solid var(--blue-accent);
+}
+
+.notification-icon.bg-info {
+  background: linear-gradient(135deg, var(--blue-primary), var(--blue-accent));
+}
+
+.notification-icon.bg-danger {
+  background: linear-gradient(135deg, var(--red-primary), #ef4444);
+}
+
+.btn-primary {
+  background: var(--blue-accent);
+}
+
+.btn-outline-primary:hover {
+  background: var(--blue-accent);
+  color: white;
+}

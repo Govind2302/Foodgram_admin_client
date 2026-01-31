@@ -1,3 +1,18 @@
+:root {
+  /* Core Theme */
+  --blue-primary: #1e3a8a;
+  --blue-accent: #2563eb;
+  --blue-soft: #eff6ff;
+
+  --red-primary: #dc2626;
+  --red-soft: #fee2e2;
+
+  --white: #ffffff;
+  --gray-text: #6c757d;
+  --dark-text: #1a1f37;
+  --border-light: #e5e7eb;
+}
+
 #root {
   width: 100%;
   margin: 0;
@@ -13,47 +28,12 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
+  background: #f8fafc;
+  color: var(--dark-text);
 }
 
 .main-content {
   width: 100%;
   padding: 1rem;
-}
-
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
