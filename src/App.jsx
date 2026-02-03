@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext.jsx';
 import Login from './pages/LoginPage.jsx';
+import Registration from './pages/RegistrationPage.jsx';
 import Dashboard from './pages/DashboardPage.jsx';
 import Restaurants from './pages/RestaurantsPage.jsx';
 import Users from './pages/UsersPage.jsx';
@@ -47,6 +48,16 @@ function App() {
           element={
             <PublicRoute>
               <Login />
+            </PublicRoute>
+          } 
+        />
+        
+        {/* Registration Route - Public */}
+        <Route 
+          path="/register" 
+          element={
+            <PublicRoute>
+              <Registration />
             </PublicRoute>
           } 
         />

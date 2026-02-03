@@ -124,9 +124,20 @@ function Login() {
             </button>
           </form>
 
-          {/* Footer */}
+          {/* Footer - Registration Link */}
           <div className="login-card-footer">
             <p className="text-muted">
+              Don't have an account?
+              Contact Another Admin
+              {/* <button 
+                type="button"
+                className="register-link"
+                onClick={() => navigate('/register')}
+              >
+                Create one
+              </button> */}
+            </p>
+            <p className="text-muted mt-2">
               <small>© 2025 Zomato Admin Panel. All rights reserved.</small>
             </p>
           </div>
